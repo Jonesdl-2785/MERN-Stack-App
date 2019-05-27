@@ -4,9 +4,9 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import './App.css';
 
 import Navbar from "./components/navbar.component";
-import WorkoutList from "./components/workouts-list.component";
-import EditWorkout from "./components/edit-workout.component";
-import CreateWorkout from "./components/create-workout.component";
+import taskList from "./components/tasks-list.component";
+import Edittask from "./components/edit-task.component";
+import Createtask from "./components/create-task.component";
 import CreateUser from "./components/create-user.component";
 
 function App() {
@@ -15,9 +15,9 @@ function App() {
       <div className="container">
       <Navbar />
       <br />
-        <Route path="/" exact component={WorkoutList} />
-        <Route path="/edit/:id" exact component={EditWorkout} />
-        <Route path="/create" exact component={CreateWorkout} />
+        <Route path="/" exact component={taskList} />
+        <Route path="/edit/:id" exact component={Edittask} />
+        <Route path="/create" exact component={Createtask} />
         <Route path="/user" exact component={CreateUser} />
       </div>
     </Router>

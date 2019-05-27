@@ -1,9 +1,9 @@
 const router = require('express').Router();
-let Workout = require('../models/workout.model');
+let task = require('../models/task.model');
 
 router.route('/').get((req, res) => {
-  Workout.find()
-    .then(workouts => res.json(workouts))
+  task.find()
+    .then(tasks => res.json(tasks))
     .catch(err => res.status(400).json('Error ' + err));
 });
 
@@ -13,40 +13,40 @@ router.route('/add').post((req, res) => {
   const duration = Number(req.body.duration);
   const date = Date.parse(req.body.date);
 
-  const newWorkout = new Workout({
+  const newtask = new task({
     username,
     description,
     duration,
     date,
   });
 
-  newWorkout.save()
-    .then(() => res.json('Workout added!'))
+  newtask.save()
+    .then(() => res.json('task added!'))
     .catch(err => res.status(400).json('Error: ' + err));
 });
 
 router.route('/:id').get((req, res) => {
-  Workout.findById(req.params.id)
-    .then(workout => res.json(workout))
+  task.findById(req.params.id)
+    .then(task => res.json(task))
     .catch(err => res.status(400).json('Error: ' + err));
 });
 
 router.route('/:id').delete((req, res) => {
-    Workout.findByIdAndDelete(req.params.id)
-      .then(() => res.json('Workout deleted.'))
+    task.findByIdAndDelete(req.params.id)
+      .then(() => res.json('task deleted.'))
       .catch(err => res.status(400).json('Error: ' + err));
 });
 
 router.route('/update/:id').post((req, res) => {
-    Workout.findById(req.params.id)
-      .then(workout => {
-        workout.username = req.body.username;
-        workout.description = req.body.description;
-        workout.duration = Number(req.body.duration);
-        workout.date = Date.parse(req.body.date);
+    task.findById(req.params.id)
+      .then(task => {
+        task.username = req.body.username;
+        task.description = req.body.description;
+        task.duration = Number(req.body.duration);
+        task.date = Date.parse(req.body.date);
 
-        workout.save()
-          .then(() => res.json('Workout updated!'))
+        task.save()
+          .then(() => res.json('task updated!'))
           .catch(err => res.status(400).json('Error: ' + err));
       })
       .catch(err => res.status(400).json('Error: ' + err));
