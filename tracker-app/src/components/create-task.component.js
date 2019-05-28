@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
-export default class Createtask extends Component {
+export default class CreateTask extends Component {
   constructor(props) {
     super(props);
 
@@ -21,11 +22,20 @@ export default class Createtask extends Component {
   }
 
   componentDidMount() {
-    this.setState({
-      users: ['test user'],
-      username: 'test user'
-    })
-  }
+    axios.get('http://localhost:5000/users/')
+      .then(response => {
+        if (response.data.length > 0) {
+          this.setState({
+            users: response.data.map(user => user.username),
+            username: response.data[0].username
+          })
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      })
+    }
+
   onChangeUsername(e) {
     this.setState({
       username: e.target.value
@@ -62,6 +72,8 @@ export default class Createtask extends Component {
 
     console.log(task);
 
+    axios.post('http://localhost:5000/tasks/add', task)
+     .then(res => console.log(res.data));
     window.location = '/';
   }
 
@@ -115,7 +127,7 @@ export default class Createtask extends Component {
                 />
               </div>
             </div>
-            
+
           <div className="form-group">
             <input type="submit" value="Create Task Log" className="btn btn-primary" />
           </div>

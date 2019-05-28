@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-export default class Edittask extends Component {
+export default class EditTask extends Component {
   render() {
     return (
       <div>
