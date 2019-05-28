@@ -1,8 +1,7 @@
 import React from 'react';
 import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import './App.css';
-
+// Components
 import Navbar from "./components/navbar.component";
 import TaskList from "./components/tasks-list.component";
 import EditTask from "./components/edit-task.component";
