@@ -21,7 +21,7 @@ router.route('/add').post((req, res) => {
   });
 
   newTask.save()
-    .then(() => res.json('task added!'))
+    .then(() => res.json('Task added!'))
     .catch(err => res.status(400).json('Error: ' + err));
 });
 
@@ -33,7 +33,7 @@ router.route('/:id').get((req, res) => {
 
 router.route('/:id').delete((req, res) => {
     Task.findByIdAndDelete(req.params.id)
-      .then(() => res.json('task deleted.'))
+      .then(() => res.json('Task deleted.'))
       .catch(err => res.status(400).json('Error: ' + err));
 });
 
