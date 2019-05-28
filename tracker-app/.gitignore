@@ -22,7 +22,7 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-tracker-app/backend/models/workout.model.js
+tracker-app/backend/models/task.model.js
 tracker-app/backend/package.json
 tracker-app/backend/routes/
 tracker-app/backend/server.js
