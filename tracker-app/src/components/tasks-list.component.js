@@ -14,7 +14,7 @@ const Task = props => (
   </tr>
 )
 
-export default class taskList extends Component {
+export default class TaskList extends Component {
   constructor(props) {
     super(props)
 
