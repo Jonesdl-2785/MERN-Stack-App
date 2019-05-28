@@ -23,7 +23,7 @@ export default class EditTask extends Component {
   }
 
   componentDidMount() {
-    axios.get('http://localhost:5000/tasks/'+this.match.params.id)
+    axios.get('http://localhost:5000/tasks/' + this.props.match.params.id)
       .then(response => {
         this.setState({
           username: response.data.username,
